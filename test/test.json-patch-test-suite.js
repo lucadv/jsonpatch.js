@@ -30,7 +30,7 @@ function add_tests(name, tests) {
           if (test.patch) {
             var error = null;
             try {
-              var result = jsonpatch.apply_patch(test.doc, test.patch)
+              var result = jsonpatch.applyPatch(test.doc, test.patch)
             } catch (e) {
               error = e;
             }

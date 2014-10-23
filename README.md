@@ -21,7 +21,7 @@ Quick Example
     thepatch = [
       { "op": "replace", "path": "/baz", "value": "boo" }
     ]
-    patcheddoc = jsonpatch.apply_patch(mydoc, thepatch);
+    patcheddoc = jsonpatch.applyPatch(mydoc, thepatch);
     // patcheddoc now equals {"baz": "boo", "foo": "bar"}}
 ```
 

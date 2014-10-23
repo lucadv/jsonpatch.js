@@ -219,7 +219,7 @@ describe('JSONPatch', function () {
         {"op": "copy", "from": "/foo/anArray/1", "path": "/foo/anArray/-"},
         {"op": "test", "path": "/foo/anArray/3", "value": "second"}
       ];
-      var patched = jsonpatch.apply_patch(doc, patch);
+      var patched = jsonpatch.applyPatch(doc, patch);
       // Check that the doc has not been mutated
       expect(JSON.stringify(doc)).equal(json)
     });
@@ -279,12 +279,12 @@ describe('JSONPatch', function () {
     it('MUST NOT be part of the location specified by "from" in a move operation', function () {
       var doc = {a:{b:true, c:false}};
       expect(function () {
-        jsonpatch.apply_patch(doc, [{op: 'move', from: '/a', path: '/a/b'}]);
+        jsonpatch.applyPatch(doc, [{op: 'move', from: '/a', path: '/a/b'}]);
       }).throwException(function (e) { expect(e).a(jsonpatch.InvalidPatch); expect(e.message).equal('destination must not be a child of source') });
     });
     it('MUST ALLOW source to start with the destinations string as long as one is not actually a subset of the other', function () {
       var doc = {a:{b:true, c:false}};
-      jsonpatch.apply_patch(doc, [{op: 'copy', from: '/a', path: '/ab'}]);
+      jsonpatch.applyPatch(doc, [{op: 'copy', from: '/a', path: '/ab'}]);
     });
   });
 
@@ -304,7 +304,7 @@ describe('JSONPatch', function () {
       };
 
       expect(function () {
-        jsonpatch.apply_patch(doc, [
+        jsonpatch.applyPatch(doc, [
           {"op": "add", "path": "/delta", "value": 2},
           {"op": "replace", "path": "/beta///", "value": 2}
         ]);
