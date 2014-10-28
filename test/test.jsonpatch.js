@@ -66,7 +66,7 @@ describe('JSONPointer', function () {
     it('should should fail if the place to add specified does not exist', function () {
       expect(function () {
         add('/foo/newprop/alsonew',example,'test');
-      }).throwException(function (e) { expect(e).a(jsonpatch.PatchApplyError); expect(e.message).equal('Path not found in document') });
+      }).throwException(function (e) { expect(e).a(jsonpatch.PatchApplyError); expect(e.message).equal('Path /foo/newprop/alsonew not found in document') });
     });
 
     it('should should succeed when replacing the root', function () {
@@ -95,7 +95,7 @@ describe('JSONPointer', function () {
     });
 
     it('should should fail if the path specified doesnt exist', function () {
-      expect(function () {do_remove('/foo/notthere/orhere', example);}).throwException(function (e) { expect(e).a(jsonpatch.PatchApplyError); expect(e.message).equal('Path not found in document') });
+      expect(function () {do_remove('/foo/notthere/orhere', example);}).throwException(function (e) { expect(e).a(jsonpatch.PatchApplyError); expect(e.message).equal('Path /foo/notthere/orhere not found in document') });
     });
 
     it('should fail if the array element specified doesnt exist', function () {
@@ -308,7 +308,7 @@ describe('JSONPatch', function () {
           {"op": "add", "path": "/delta", "value": 2},
           {"op": "replace", "path": "/beta///", "value": 2}
         ]);
-      }).throwException(function (e) { expect(e).a(Error); expect(e.message).equal('Path not found in document') });
+      }).throwException(function (e) { expect(e).a(Error); expect(e.message).equal('Path /beta/// not found in document') });
 
 
       expect(doc.beta).equal(undefined);
