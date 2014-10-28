@@ -60,7 +60,7 @@ describe('JSONPointer', function () {
     it('should fail if adding to an array would create a sparse array', function () {
       expect(function () {
         add('/foo/anArray/4',example,'test');
-      }).throwException(function (e) { expect(e).a(jsonpatch.PatchApplyError); expect(e.message).equal('Add operation must not attempt to create a sparse array!') });
+      }).throwException(function (e) { expect(e).a(jsonpatch.PatchApplyError); expect(e.message).equal('Add operation must not attempt to create a sparse array') });
     });
 
     it('should should fail if the place to add specified does not exist', function () {
@@ -91,7 +91,7 @@ describe('JSONPointer', function () {
     });
 
     it('should fail if the object key specified doesnt exist', function () {
-      expect(function () {do_remove('/foo/notthere', example);}).throwException(function (e) { expect(e).a(jsonpatch.PatchApplyError); expect(e.message).equal('Remove operation must point to an existing value!') });
+      expect(function () {do_remove('/foo/notthere', example);}).throwException(function (e) { expect(e).a(jsonpatch.PatchApplyError); expect(e.message).equal('Remove operation must point to an existing value') });
     });
 
     it('should should fail if the path specified doesnt exist', function () {
@@ -99,7 +99,7 @@ describe('JSONPointer', function () {
     });
 
     it('should fail if the array element specified doesnt exist', function () {
-      expect(function () {do_remove('/foo/anArray/4', example);}).throwException(function (e) { expect(e).a(jsonpatch.PatchApplyError); expect(e.message).equal('Remove operation must point to an existing value!') });
+      expect(function () {do_remove('/foo/anArray/4', example);}).throwException(function (e) { expect(e).a(jsonpatch.PatchApplyError); expect(e.message).equal('Remove operation must point to an existing value') });
     });
 
     it('should return undefined when removing the root', function () {
